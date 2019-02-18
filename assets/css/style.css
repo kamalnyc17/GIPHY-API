@@ -22,14 +22,12 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
     font-weight: bold;
-}
-.result-area {
-    min-height: 75vh;
+
+    flex-wrap: wrap;
 }
 /* === buttons === */
 #movie-input,
 .btn {
-    font-weight: bold;
     margin-top: 5px;
     margin-right: 5px;
     border: 1px solid black;
