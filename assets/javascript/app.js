@@ -8,7 +8,7 @@ function picMoving() {
 
 // function to switch from animated to still
 function picStill() {
-    var stillURL = $(this).attr("data-picurl");
+    var stillURL = $(this).attr("data-picurl1");
     $(this).attr("src", stillURL);
 }
 
@@ -58,13 +58,19 @@ function mapOutput() {
             imgElement1.attr("src", image1);
             animalDiv.append(imgElement1);
 
-            // storing still & animated urls to each other             
-            imgElement.attr("data-picurl", image1);
-            imgElement1.attr("data-picurl", image);
+            // storing still & animated urls to each other 
+            console.log(" before changing attr"); 
+            console.log(image);
+            console.log(image1);           
+            $(".still-picture").attr("data-picurl", image1);
+            $(".moving-picture").attr("data-picurl1", image);
 
             // append the animal slide in the display area
             $("#result-area").append(animalDiv);
             $(".moving-picture").hide();
+            console.log(" image attribute");
+            console.log( $(".still-picture").attr("data-picurl"));
+            console.log($(".moving-picture").attr("data-picurl1"));
             }
         }
     });
@@ -99,8 +105,11 @@ $("#add-animal").on("click", function (event) {
 // Adding click event listeners to all elements with a class of "result-area"
 $(document).on("click", ".animal", mapOutput);
 
-// switching from still pictuee to animation
+// switching from still picture to animation
 $(document).on("click", ".still-picture", picMoving);
+
+// switching from animated picture to still
+$(document).on("click", ".moving-picture", picStill);
 
 // creates the default buttons in the beginning
 createButtons();
