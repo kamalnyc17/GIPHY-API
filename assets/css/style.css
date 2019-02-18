@@ -12,3 +12,11 @@
     height: 100%;
     min-height: 100vh;
 }
+/* === flex containers === */
+.button-area,
+.search-area,
+.result-area {
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+}
