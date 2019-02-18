@@ -9,10 +9,36 @@ function mapOutput() {
         url: queryURL,
         method: "GET"
     }).then(function (animalInfo) {
-            if (animalInfo.Error) {
-                $(".result-area").text("Invalid Entry");
-        } else {
-            $(".result-area").text(JSON.stringify(animalInfo));
+        console.log(animalInfo);
+        console.log(animalInfo.pagination);
+        console.log(animalInfo.pagination.total_count);
+        console.log(animalInfo.data[0].slug);
+        if (parseInt(animalInfo.pagination.total_count) === 0) {
+                $("#result-area").text("Invalid Entry");
+        } else {            
+            for(var i=0; i<10; i++){
+            // Creates a div to hold the animal information
+            var animalDiv = $("<div>");
+            // Retrieves the Rating Data
+            var rating = animalInfo.data[i].rating;
+            // Creates an element to have the rating displayed
+            var ratingP = $("<div>");
+            // Displays the rating
+            ratingP.html("<strong>Rating:</strong>" + rating);
+            animalDiv.append(ratingP);
+            // Retrieves the release year
+            var size = animalInfo.data[i].images.fixed_width.size;
+            // Creates an element to hold the release year
+            var sizeP = $("<div>");
+            // Displays the release year
+            sizeP.html("<strong>Release Year:</strong>" + size);
+            animalDiv.append(sizeP);
+
+
+            // append the animal slide in the display area
+            $("#result-area").append(animalDiv);
+                //$("#result-area").append(" slug: " + animalInfo.data[i].slug);
+            }
         }
         //for (var i=0; i<10; i++){
 
