@@ -1,0 +1,14 @@
+/* === styling home page === */
+.container {
+    max-width: 980px;
+    margin: auto;
+    border: 1px solid #dddddd;
+
+    background-image: url( "../images/Background 2.jpg" );
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 100%;
+    min-height: 100vh;
+}
