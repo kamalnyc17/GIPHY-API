@@ -3,17 +3,20 @@ var animals = ["cat", "dog", "falcon", "horse", "tiger", "crow", "deer", "fox", 
 // function to map out 10 outputs from JSON
 function mapOutput() {
     var animal = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal +"&r=a&api_key=ClnEUFEAKEdutrNEzTgBVP4Sgh6EiezM&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&r=a&api_key=ClnEUFEAKEdutrNEzTgBVP4Sgh6EiezM&limit=10";
 
     $.ajax({
         url: queryURL,
         method: "GET"
-      }).then(function (animalInfo) { 
-          $(".result-area").text( JSON.stringify(animalInfo) );
+    }).then(function (animalInfo) {
+            if (animalInfo.Error) {
+                $(".result-area").text("Invalid Entry");
+        } else {
+            $(".result-area").text(JSON.stringify(animalInfo));
+        }
+        //for (var i=0; i<10; i++){
 
-    //for (var i=0; i<10; i++){
-
-    //}
+        //}
     });
 }
 
