@@ -35,10 +35,22 @@
     margin-right: 5px;
     border: 1px solid black;
 }
+.download {
+    background-color: white;
+    vertical-align: middle;
+}
+.download:hover {
+    background-color: black;
+    color: white;    
+}
 /* === images === */
 img {
     height: 200px;
     width: 200px;
+}
+.small-icon {
+    height: 30px;
+    width: 20px;
 }
 /* === animal info tile === */
 .animal-info {

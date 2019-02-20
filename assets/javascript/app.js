@@ -51,9 +51,8 @@ function mapOutput() {
                 animalDiv.append(imgElement);
 
                 // create download button
-                var downloadB = $('<br><button class=' + "btn" + '><i class=' + "fa fa-download " + 'aria-hidden=' + "true" +'></i>' + "Download" + '</button>' );
-                console.log(downloadB);
-                downloadB.attr("file-source", image);
+                var downloadB = $('<br><button class="btn download"><img src="assets/images/download1.png" class="small-icon"></img> Download</button>' );                
+                downloadB.attr("data-download", image);
                 animalDiv.append(downloadB);
 
                 // append the animal slide in the display area
