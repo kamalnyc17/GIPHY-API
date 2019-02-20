@@ -1,16 +1,19 @@
-var animals = ["cat", "dog", "falcon", "horse", "tiger", "crow", "deer", "fox", "pegion", "duck"];
+var animals = ["cat", "dog", "falcon", "horse", "tiger", "crow", "deer", "fox", "seal", "duck"];
 
 // function to switch from still to animated
 function picMoving() {
-    var movingURL = $(this).attr("data-picurl");
-    $(this).attr("src", movingURL);
+    var picURL = $(this).attr("src");
+    var stillURL = $(this).attr("data-picurl");
+    var movingURL = $(this).attr("data-picurl1");
+
+    if (picURL === stillURL) {
+        $(this).attr("src", movingURL);
+    } else {
+        $(this).attr("src", stillURL);
+    }
+
 }
 
-// function to switch from animated to still
-function picStill() {
-    var stillURL = $(this).attr("data-picurl1");
-    $(this).attr("src", stillURL);
-}
 
 // function to map out 10 outputs from JSON
 function mapOutput() {
@@ -23,54 +26,39 @@ function mapOutput() {
         method: "GET"
     }).then(function (animalInfo) {
         if (parseInt(animalInfo.pagination.total_count) === 0) {
-                $("#result-area").text("Invalid Entry");
-        } else {            
-            for(var i=0; i<10; i++){
-            // Creates a div to hold the animal information
-            var animalDiv = $("<div>");
-            animalDiv.addClass("animal-info");
-            // Retrieves the Rating Data
-            var rating = animalInfo.data[i].rating;
-            // Creates an element to have the rating displayed
-            var ratingP = $("<div>");
-            // Displays the rating
-            ratingP.html("<strong>Rating:</strong>" + rating);
-            animalDiv.append(ratingP);
-            // Retrieves the file size
-            var size = animalInfo.data[i].images.fixed_width.size;
-            // Creates an element to hold the file size
-            var sizeP = $("<div>");
-            // Displays the file size
-            sizeP.html("<strong>File Size</strong>" + size);
-            animalDiv.append(sizeP);
+            $("#result-area").text("Invalid Entry");
+        } else {
+            for (var i = 0; i < 10; i++) {
+                // Creates a div to hold the animal information
+                var animalDiv = $("<div>");
+                animalDiv.addClass("animal-info");
+                // Retrieves the Rating Data
+                var rating = animalInfo.data[i].rating;
+                // Creates an element to have the rating displayed
+                var ratingP = $("<div>");
+                // Displays the rating
+                ratingP.html("<strong>Rating:</strong>" + rating.toUpperCase());
+                animalDiv.append(ratingP);
+                // Retrieves the file size
+                //var size = animalInfo.data[i].images.fixed_width.size;
+                // Creates an element to hold the file size
+                //var sizeP = $("<div>");
+                // Displays the file size
+                //sizeP.html("<strong>File Size</strong>" + size);
+                //animalDiv.append(sizeP);
 
-            // Appends the still image
-            var imgElement = $("<img>");
-            imgElement.addClass("still-picture");
-            var image = animalInfo.data[i].images.fixed_height_still.url;
-            imgElement.attr("src", image);
-            animalDiv.append(imgElement);
-            
-            // Appends the animation
-            var imgElement1 = $("<img>");
-            imgElement1.addClass("moving-picture");
-            var image1 = animalInfo.data[i].images.fixed_width.url;
-            imgElement1.attr("src", image1);
-            animalDiv.append(imgElement1);
+                // Appends the still image
+                var imgElement = $("<img>");
+                // imgElement.addClass("still-picture");
+                var image = animalInfo.data[i].images.fixed_height_still.url; // still picture
+                var image1 = animalInfo.data[i].images.fixed_width.url; // animation
+                imgElement.attr("src", image);
+                imgElement.attr("data-picurl", image1);
+                imgElement.attr("data-picurl1", image);
+                animalDiv.append(imgElement);
 
-            // storing still & animated urls to each other 
-            console.log(" before changing attr"); 
-            console.log(image);
-            console.log(image1);           
-            $(".still-picture").attr("data-picurl", image1);
-            $(".moving-picture").attr("data-picurl1", image);
-
-            // append the animal slide in the display area
-            $("#result-area").append(animalDiv);
-            $(".moving-picture").hide();
-            console.log(" image attribute");
-            console.log( $(".still-picture").attr("data-picurl"));
-            console.log($(".moving-picture").attr("data-picurl1"));
+                // append the animal slide in the display area
+                $("#result-area").append(animalDiv);
             }
         }
     });
@@ -106,10 +94,10 @@ $("#add-animal").on("click", function (event) {
 $(document).on("click", ".animal", mapOutput);
 
 // switching from still picture to animation
-$(document).on("click", ".still-picture", picMoving);
+$(document).on("click", "img", picMoving);
 
 // switching from animated picture to still
-$(document).on("click", ".moving-picture", picStill);
+//$(document).on("click", ".moving-picture", picStill);
 
 // creates the default buttons in the beginning
 createButtons();
