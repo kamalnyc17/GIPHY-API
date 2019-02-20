@@ -39,15 +39,8 @@ function mapOutput() {
                 // Displays the rating
                 ratingP.html("<strong>Rating:</strong>" + rating.toUpperCase());
                 animalDiv.append(ratingP);
-                // Retrieves the file size
-                //var size = animalInfo.data[i].images.fixed_width.size;
-                // Creates an element to hold the file size
-                //var sizeP = $("<div>");
-                // Displays the file size
-                //sizeP.html("<strong>File Size</strong>" + size);
-                //animalDiv.append(sizeP);
 
-                // Appends the still image
+                // Appends the still image and store urls of animated as well
                 var imgElement = $("<img>");
                 // imgElement.addClass("still-picture");
                 var image = animalInfo.data[i].images.fixed_height_still.url; // still picture
@@ -56,6 +49,12 @@ function mapOutput() {
                 imgElement.attr("data-picurl", image1);
                 imgElement.attr("data-picurl1", image);
                 animalDiv.append(imgElement);
+
+                // create download button
+                var downloadB = $('<br><button class=' + "btn" + '><i class=' + "fa fa-download " + 'aria-hidden=' + "true" +'></i>' + "Download" + '</button>' );
+                console.log(downloadB);
+                downloadB.attr("file-source", image);
+                animalDiv.append(downloadB);
 
                 // append the animal slide in the display area
                 $("#result-area").append(animalDiv);
