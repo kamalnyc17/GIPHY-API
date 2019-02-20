@@ -1,7 +1,36 @@
 var animals = ["cat", "dog", "falcon", "horse", "tiger", "crow", "deer", "fox", "seal", "duck"];
 var shallAppend = false;
 var animal;
-var animalCounter = 0;  //this variable will keep track of the running data index
+var animalCounter = 0; //this variable will keep track of the running data index
+
+// adding to favorite section
+function addToFavorite() {
+    var animalDiv = $("<div>");
+    animalDiv.addClass("animal-info");
+
+    // Retrieves the Rating Data
+    var rating = $(this).attr("rating");
+    // Creates an element to have the rating displayed
+    var ratingP = $("<div>");
+    ratingP.addClass("label");
+    // Displays the rating
+    ratingP.html(rating);
+    animalDiv.append(ratingP);
+
+    // create the still image
+    var imgElement = $("<img>");
+    // imgElement.addClass("still-picture");
+    var image = $(this).attr("still-pic");
+    var image1 = $(this).attr("moving-pic");
+    imgElement.attr("src", image);
+    imgElement.attr("data-picurl", image1);
+    imgElement.attr("data-picurl1", image);
+    animalDiv.append(imgElement);
+
+    // append the animal slide in the favorite area
+    $("#favorite-area").append(animalDiv);
+
+}
 
 // function to switch from still to animated
 function picMoving() {
@@ -24,7 +53,7 @@ function addMore() {
 }
 
 // function to map out 10 outputs from JSON
-function mapOutput() {    
+function mapOutput() {
     if (!shallAppend) {
         $("#result-area").empty();
         animal = $(this).attr("data-name");
@@ -32,7 +61,7 @@ function mapOutput() {
     } else {
         shallAppend = false;
     }
-    
+
     $("#append-animal").show();
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&r=a&api_key=ClnEUFEAKEdutrNEzTgBVP4Sgh6EiezM&limit=100";
 
@@ -66,9 +95,18 @@ function mapOutput() {
                 imgElement.attr("data-picurl1", image);
                 animalDiv.append(imgElement);
 
+                // create favorite button
+                var favoriteButton = $("<br><button>");
+                favoriteButton.attr("still-pic", image);
+                favoriteButton.attr("moving-pic", image1);
+                favoriteButton.attr("rating", "<strong>Rating:</strong>" + rating.toUpperCase())
+                favoriteButton.text("Add to Favorite");
+                favoriteButton.addClass("btn favoritebtn");
+                animalDiv.append(favoriteButton);
+
                 // create download button
-                var downloadB = $('<br><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button>' ); 
-                console.log('<br><a href="' + image + '" download><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>' );                
+                var downloadB = $('<br><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button>');
+                console.log('<br><a href="' + image + '" download><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>');
                 downloadB.attr("data-download", image);
                 animalDiv.append(downloadB);
 
@@ -114,6 +152,9 @@ $(document).on("click", "img", picMoving);
 
 // appending more pictures
 $(document).on("click", "#append-animal", addMore);
+
+// adding pictures to favorite
+$(document).on("click", ".favoritebtn", addToFavorite);
 
 // creates the default buttons in the beginning
 $("#append-animal").hide();

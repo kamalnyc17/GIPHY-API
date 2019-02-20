@@ -32,15 +32,20 @@
                 <input type="text" id="animal-input"><br>
 
                 <!-- Button triggers new movie to be added -->
-                <button type="button" id="add-animal" class="btn btn-info">Submit</button>       
+                <button type="button" id="add-animal" class="btn btn-info">Submit</button>
                 <!-- Button to append more pictures instead of replacing them -->
                 <button type="button" id="append-animal" class="btn btn-info">Append More Pictures</button>
             </form>
         </div>
+        <!-- flex container to display results -->
+
+        <div class="favorite d-inline-flex p-2">
+            <div>My Favorites:</div>
+            <div id="favorite-area" class="d-inline-flex p-2"></div>
+        </div>
 
         <!-- flex container to display results -->
-        <div id="result-area" class="d-inline-flex p-2">     
-        </div>
+        <div id="result-area" class="d-inline-flex p-2"></div>
     </div>
 
     <!-- bootstrap jquery-->
