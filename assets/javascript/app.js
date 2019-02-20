@@ -1,4 +1,5 @@
 var animals = ["cat", "dog", "falcon", "horse", "tiger", "crow", "deer", "fox", "seal", "duck"];
+var shallAppend = false;
 
 // function to switch from still to animated
 function picMoving() {
@@ -16,8 +17,13 @@ function picMoving() {
 
 
 // function to map out 10 outputs from JSON
-function mapOutput() {
-    $("#result-area").empty();
+function mapOutput() {    
+    if (!shallAppend) {
+        $("#result-area").empty();
+    }
+    
+    $("#append-animal").show();
+    
     var animal = $(this).attr("data-name");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&r=a&api_key=ClnEUFEAKEdutrNEzTgBVP4Sgh6EiezM&limit=10";
 
@@ -97,4 +103,5 @@ $(document).on("click", ".animal", mapOutput);
 $(document).on("click", "img", picMoving);
 
 // creates the default buttons in the beginning
+$("#append-animal").hide();
 createButtons();
