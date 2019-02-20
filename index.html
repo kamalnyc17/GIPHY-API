@@ -26,16 +26,20 @@
         <div class="button-area d-inline-flex p-2"></div>
 
         <!-- flex container for search button -->
-        <div class="search-area d-flex p-2">
-            <form id="animal-form">
-                <label for="data-input" class="label">Add an Animal!</label><br>
-                <input type="text" id="animal-input"><br>
+        <div class="search-area d-inline-flex d-flex p-2 justify-content-between">
+            <div class="p-2">
+                <form id="animal-form">
+                    <label for="data-input" class="label">Add an Animal!</label><br>
+                    <input type="text" id="animal-input"><br>
 
-                <!-- Button triggers new movie to be added -->
-                <button type="button" id="add-animal" class="btn btn-info">Submit</button>
+                    <!-- Button triggers new movie to be added -->
+                    <button type="button" id="add-animal" class="btn btn-info">Submit</button>
+                </form>
+            </div>
+            <div class="p-2">
                 <!-- Button to append more pictures instead of replacing them -->
                 <button type="button" id="append-animal" class="btn btn-info">Append More Pictures</button>
-            </form>
+            </div>
         </div>
         <!-- flex container to display results -->
 
@@ -58,7 +62,6 @@
 
     <!-- jquery library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--<script src='//js.zapjs.com/js/download.js'></script> -->
 
     <!-- javascript -->
     <script src="assets/javascript/app.js"></script>
