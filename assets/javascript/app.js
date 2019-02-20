@@ -1,5 +1,7 @@
 var animals = ["cat", "dog", "falcon", "horse", "tiger", "crow", "deer", "fox", "seal", "duck"];
 var shallAppend = false;
+var animal;
+var animalCounter = 0;  //this variable will keep track of the running data index
 
 // function to switch from still to animated
 function picMoving() {
@@ -15,17 +17,24 @@ function picMoving() {
 
 }
 
+// function to append more pictures
+function addMore() {
+    shallAppend = true;
+    mapOutput();
+}
 
 // function to map out 10 outputs from JSON
 function mapOutput() {    
     if (!shallAppend) {
         $("#result-area").empty();
+        animal = $(this).attr("data-name");
+        animalCounter = 0;
+    } else {
+        shallAppend = false;
     }
     
     $("#append-animal").show();
-    
-    var animal = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&r=a&api_key=ClnEUFEAKEdutrNEzTgBVP4Sgh6EiezM&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&r=a&api_key=ClnEUFEAKEdutrNEzTgBVP4Sgh6EiezM&limit=100";
 
     $.ajax({
         url: queryURL,
@@ -39,7 +48,7 @@ function mapOutput() {
                 var animalDiv = $("<div>");
                 animalDiv.addClass("animal-info");
                 // Retrieves the Rating Data
-                var rating = animalInfo.data[i].rating;
+                var rating = animalInfo.data[animalCounter].rating;
                 // Creates an element to have the rating displayed
                 var ratingP = $("<div>");
                 ratingP.addClass("label");
@@ -50,8 +59,8 @@ function mapOutput() {
                 // Appends the still image and store urls of animated as well
                 var imgElement = $("<img>");
                 // imgElement.addClass("still-picture");
-                var image = animalInfo.data[i].images.fixed_height_still.url; // still picture
-                var image1 = animalInfo.data[i].images.fixed_width.url; // animation
+                var image = animalInfo.data[animalCounter].images.fixed_height_still.url; // still picture
+                var image1 = animalInfo.data[animalCounter].images.fixed_width.url; // animation
                 imgElement.attr("src", image);
                 imgElement.attr("data-picurl", image1);
                 imgElement.attr("data-picurl1", image);
@@ -65,6 +74,7 @@ function mapOutput() {
 
                 // append the animal slide in the display area
                 $("#result-area").append(animalDiv);
+                animalCounter++;
             }
         }
     });
@@ -101,6 +111,9 @@ $(document).on("click", ".animal", mapOutput);
 
 // switching from still picture to animation
 $(document).on("click", "img", picMoving);
+
+// appending more pictures
+$(document).on("click", "#append-animal", addMore);
 
 // creates the default buttons in the beginning
 $("#append-animal").hide();
