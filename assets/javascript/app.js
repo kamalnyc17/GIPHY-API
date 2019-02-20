@@ -52,8 +52,8 @@ function mapOutput() {
                 animalDiv.append(imgElement);
 
                 // create download button
-                var downloadB = $('<br><a href=' + image + ' download><button class="btn download"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>' ); 
-                console.log( $('<br><a href=' + image + ' download><button class="btn download"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>' ));                
+                var downloadB = $('<br><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button>' ); 
+                console.log('<br><a href="' + image + '" download><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>' );                
                 downloadB.attr("data-download", image);
                 animalDiv.append(downloadB);
 
