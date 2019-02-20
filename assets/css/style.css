@@ -24,6 +24,10 @@
     border: 1px solid black;
     flex-wrap: wrap;
 }
+.favorite,
+#favorite-area {
+    background-color: rgb(248, 248, 150);
+}
 #favorite-area {
     border: none;
 }
