@@ -36,6 +36,7 @@ function mapOutput() {
                 var rating = animalInfo.data[i].rating;
                 // Creates an element to have the rating displayed
                 var ratingP = $("<div>");
+                ratingP.addClass("label");
                 // Displays the rating
                 ratingP.html("<strong>Rating:</strong>" + rating.toUpperCase());
                 animalDiv.append(ratingP);
