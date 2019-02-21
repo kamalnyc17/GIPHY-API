@@ -15,3 +15,8 @@ button and add a picture alongwith it's animation and rating in the "My Favorite
 downloading it. I am working with the TAs and Instructor to fix it.
 
 6. The design is fully responsive. I have used Bootstrap to make it all device compatible.
+
+Thanks,
+
+Kamal
+kamalnyc17@gmail.com
