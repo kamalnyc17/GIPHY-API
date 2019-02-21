@@ -105,9 +105,10 @@ function mapOutput() {
                 animalDiv.append(favoriteButton);
 
                 // create download button
-                var downloadB = $('<br><a href="' + image + '" download><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>');
-                console.log('<br><a href="' + image + '" download><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>');
-                downloadB.attr("data-download", image);
+                var downloadB = $('<br><a href="' + image1 + '" download><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>');
+                // var downloadB = $('<br><a href="' + image + '" download>dwnld</a>');
+                // console.log('<br><a href="' + image + '" download><button class="btn downloadbtn"><img src="assets/images/download1.png" class="small-icon"></img> Download</button></a>');
+                //downloadB.attr("data-download", image);
                 animalDiv.append(downloadB);
 
                 // append the animal slide in the display area
