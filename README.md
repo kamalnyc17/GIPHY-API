@@ -14,3 +14,4 @@ button and add a picture alongwith it's animation and rating in the "My Favorite
 5. The Download button is supposed to provide a one-click download option. However, right now it's opening up the file on the browser instead of
 downloading it. I am working with the TAs and Instructor to fix it.
 
+6. The design is fully responsive. I have used Bootstrap to make it all device compatible.
