@@ -10,3 +10,7 @@ However, there is a "Append more pictures button", that will allow users to add 
 
 4. There is a "My Favorites" area on the page. The background color for this section is yellow to distinguish. Users can click on the "Add to Favorite"
 button and add a picture alongwith it's animation and rating in the "My Favorites" section.
+
+5. The Download button is supposed to provide a one-click download option. However, right now it's opening up the file on the browser instead of
+downloading it. I am working with the TAs and Instructor to fix it.
+
