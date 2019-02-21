@@ -8,4 +8,5 @@ the animated image, it will become still.
 3. Users have the option to add more animals. Every time a user clicks on a button, it will clear the page and bring 10 pictures from GIPHY-API.
 However, there is a "Append more pictures button", that will allow users to add more picture at the bottom of the page.
 
-4. 
+4. There is a "My Favorites" area on the page. The background color for this section is yellow to distinguish. Users can click on the "Add to Favorite"
+button and add a picture alongwith it's animation and rating in the "My Favorites" section.
