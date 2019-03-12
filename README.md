@@ -16,7 +16,4 @@ downloading it. I am working with the TAs and Instructor to fix it.
 
 6. The design is fully responsive. I have used Bootstrap to make it all device compatible.
 
-Thanks,
-
-Kamal
-kamalnyc17@gmail.com
+7. Link to the deployed project: https://kamalnyc17.github.io/GIPHY-API/
